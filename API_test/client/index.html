@@ -17,6 +17,7 @@
 <body>
 <div class="container mt-5">
     <div class="row">
+
         <div class="col-md-6">
             <h3 class="mt-3">Добавить запись</h3>
             <div>
@@ -33,6 +34,25 @@
                     <textarea class="form-control" id="post" required></textarea>
                 </div>
                 <button type="submit" name="post" class="btn btn-success" onclick="addPost()">Добавить</button>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h3 class="mt-3">Изменить запись</h3>
+            <div>
+                <div class="form-group">
+                    <label for="author">Автор</label>
+                    <input type="text" class="form-control" id="edit-author" >
+                </div>
+                <div class="form-group">
+                    <label for="title">Заголовок</label>
+                    <input type="text" class="form-control" id="edit-title" >
+                </div>
+                <div class="form-group">
+                    <label for="post">Текст поста</label>
+                    <textarea class="form-control" id="edit-post" ></textarea>
+                </div>
+                <button class="btn btn-warning" onclick="updatePost()">Обновить пост</button>
             </div>
         </div>
     </div>

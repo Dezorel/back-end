@@ -1,3 +1,4 @@
+let globalID = null
 const link = 'http://localhost/back-end/API_test/posts'     //показываю откуда  получаю данные
 async function getPosts(){
     //let res = await fetch('https://jsonplaceholder.typicode.com/posts')     //показываю откуда  получаю данные
@@ -18,8 +19,11 @@ async function getPosts(){
                 <p class="card-text">${item.post}</p>
             </div>
             <div class="card-footer text-muted">
-                <div class="d-flex justify-content-end">
-                    ${item.author}
+                <div class="d-flex justify-content-between align-items-center">
+                <button class="btn btn-danger" onclick="removePost(${item.id_post})">Удалить</button>
+                <button class="btn btn-warning" onclick="selectPost('${item.id_post}', '${item.author}', '${item.title}', 
+                '${item.post}')">Редактировать</button>
+                    ${item.author} 
                 </div>
             </div>
         </div>`
@@ -47,6 +51,29 @@ async function addPost(){
         await getPosts()
     }
 }
+
+async function removePost(id){
+    const res = await fetch(`http://localhost/back-end/API_test/posts/${id}`,{
+        method: "DELETE"
+    })
+    const data = await res.json()
+    console.log(data)
+    if(data.status === true){
+         await getPosts()
+     }
+}
+
+function selectPost(id, author, title, post){
+    globalID = id;
+    document.getElementById('edit-title').value = title
+    document.getElementById('edit-author').value = author
+    document.getElementById('edit-post').value = post
+}
+
+async function updatePost(id){
+
+}
+
 
 
 
