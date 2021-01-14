@@ -53,3 +53,16 @@ function updatePost($data, $id){
     ];
     echo json_encode($res);
 }
+
+function deletePost($id){
+    global $link;
+    $sql ="DELETE FROM `myblog` WHERE `myblog`.`id_post` = '$id'";
+    $query = $link->query($sql);
+
+    http_response_code(200);
+    $res =[
+        "status"=>true,
+        "message"=>'Post is deleted'
+    ];
+    echo json_encode($res);
+}

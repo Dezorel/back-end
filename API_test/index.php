@@ -39,6 +39,13 @@ elseif ($method === 'PATCH'){
         }
     }
 }
+elseif ($method === 'DELETE'){
+    if($type === 'posts'){
+        if(isset($id)){
+            deletePost($id);
+        }
+    }
+}
 
 
 
