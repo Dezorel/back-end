@@ -1,6 +1,12 @@
 <?php
 // Создание API
 require "functions.php";
+
+header('Access-control-Allow-Origin: *');       //позволяет другим пользователям полльзоваться апи
+header('Access-control-Allow-Headers: *');       //позволяет другим пользователям полльзоваться апи
+header('Access-control-Allow-Methods: *');       //позволяет другим пользователям полльзоваться апи
+header('Access-control-Allow-Credentials: true');       //позволяет другим пользователям полльзоваться апи
+
 header('Content-type: json/application');   //делаю так что бы страница отображалась как json
 
 $q = $_GET['q']; //переменная получаемая из htaccess = всему тому что идёт после index.php/.... в url строке
