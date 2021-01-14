@@ -30,7 +30,8 @@ function addPost($data){
     global $link;
     $title = $data['title'];
     $post = $data['post'];
-    $sql = "INSERT INTO `myblog` (`name_user`, `title`, `post`) VALUES ('Leonid', '$title', '$post');";
+    $author = $data['author'];
+    $sql = "INSERT INTO `myblog` (`author`, `title`, `post`) VALUES ('$author', '$title', '$post');";
     $query= $link->query($sql);
     $res = [        //делаем ответ сервера при дообавлении
         "status"=>true,
