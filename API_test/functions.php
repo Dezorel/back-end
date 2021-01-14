@@ -39,3 +39,17 @@ function addPost($data){
     http_response_code(201);    //возвращаем код 201-создано
     echo json_encode($res);
 }
+
+function updatePost($data, $id){
+    global $link;
+    $title = $data['title'];
+    $post = $data['post'];
+    $sql = "UPDATE `myblog` SET `title` = '$title', `post` = '$post' WHERE `id_post` = '$id'";
+    $query = $link->query($sql);
+    http_response_code(200);
+    $res =[
+        "status"=>true,
+        "message"=>'Post is updated'
+    ];
+    echo json_encode($res);
+}

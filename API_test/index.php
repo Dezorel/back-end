@@ -33,7 +33,9 @@ elseif ($method === 'POST'){
 elseif ($method === 'PATCH'){
     if($type === 'posts'){
         if(isset($id)){
-            updatePost($id);
+            $data = file_get_contents('php://input');   //позволяет получить данные из метода ПАТЧ
+            $data = json_decode($data,true);    //при значении тру делаем ассоциативный массив, при фолс - получаем объект
+            updatePost($data, $id);
         }
     }
 }
