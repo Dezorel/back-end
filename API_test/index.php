@@ -6,23 +6,38 @@ header('Content-type: json/application');   //делаю так что бы ст
 $q = $_GET['q']; //переменная получаемая из htaccess = всему тому что идёт после index.php/.... в url строке
 $params = explode('/', $q); //разбиваю строку через слэш, тем самым получая массив введённых данных
 
+$method = $_SERVER['REQUEST_METHOD'];      //смотрим какой метод используется post, get и тд
 
 $type = $params[0];
 if(isset($params[1])){
     $id = $params[1];
 }
 
+if($method === 'GET'){      //прооверка методов
+    if ($type === 'posts'){     //если мы напишем в адерсной строке /posts то соотв. нам выведется список постов (кастомайз апи)
 
-if ($type === 'posts'){     //если мы напишем в адерсной строке /posts то соотв. нам выведется список постов (кастомайз апи)
+        if(isset($id)){            //если есть id то выводим только 1 пост конкретный
+            $post = getPost($id);
+        }
+        else{
+            $posts = getPosts();
 
-    if(isset($id)){            //если есть id то выводим только 1 пост конкретный
-        $post = getPost($id);
-    }
-    else{
-        $posts = getPosts();
-
+        }
     }
 }
+elseif ($method === 'POST'){
+    if($type === 'posts'){
+        addPost($_POST);
+    }
+}
+elseif ($method === 'PATCH'){
+    if($type === 'posts'){
+        if(isset($id)){
+            updatePost($id);
+        }
+    }
+}
+
 
 
 

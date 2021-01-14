@@ -22,8 +22,20 @@ function getPost($id){
         echo json_encode($res);
     }
     else {
-
         echo json_encode($data);
     }
 }
 
+function addPost($data){
+    global $link;
+    $title = $data['title'];
+    $post = $data['post'];
+    $sql = "INSERT INTO `myblog` (`name_user`, `title`, `post`) VALUES ('Leonid', '$title', '$post');";
+    $query= $link->query($sql);
+    $res = [        //делаем ответ сервера при дообавлении
+        "status"=>true,
+        "post_id"=>$link->lastInsertId()
+    ];
+    http_response_code(201);    //возвращаем код 201-создано
+    echo json_encode($res);
+}
