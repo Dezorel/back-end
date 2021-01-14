@@ -10,3 +10,4 @@ try{
 }catch(Exception $e){
     die("Не удалось подключиться". $e->getMessage());
 }
+
