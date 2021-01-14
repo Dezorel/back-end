@@ -1,15 +1,31 @@
 <?php
 // Создание API
 require "functions.php";
-
 header('Content-type: json/application');   //делаю так что бы страница отображалась как json
 
-$posts = getPost();
+$q = $_GET['q']; //переменная получаемая из htaccess = всему тому что идёт после index.php/.... в url строке
+$params = explode('/', $q); //разбиваю строку через слэш, тем самым получая массив введённых данных
 
-//foreach ($posts as $post){
-//    echo '<h2>'.$post['title'].'</h2>'.'<p>'.$post['post'].'</p><br>';
-//}
+$id = null;
+$type = $params[0];
+if(isset($params[1])){
+    $id = $params[1];
+}
 
-echo json_encode($posts);   //делаю массив в json
+
+if ($type === 'posts'){     //если мы напишем в адерсной строке /posts то соотв. нам выведется список постов (кастомайз апи)
+
+    if(isset($id)){            //если есть id то выводим только 1 пост конкретный
+        $post = getPost($id);
+        echo json_encode($post);
+    }
+    else{
+        $posts = getPosts();
+        echo json_encode($posts);   //делаю массив в json
+    }
+
+
+}
+
 
 
