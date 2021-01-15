@@ -57,7 +57,6 @@ async function removePost(id){
         method: "DELETE"
     })
     const data = await res.json()
-    console.log(data)
     if(data.status === true){
          await getPosts()
      }
@@ -70,8 +69,30 @@ function selectPost(id, author, title, post){
     document.getElementById('edit-post').value = post
 }
 
-async function updatePost(id){
+async function updatePost(){
+    const title = document.getElementById('edit-title').value;
+    const author = document.getElementById('edit-author').value;
+    const post = document.getElementById('edit-post').value;
 
+    const data = {
+        title: title,
+        author: author,
+        post: post
+    }
+
+    const res = await fetch(`http://localhost/back-end/API_test/posts/${globalID}`, {
+        method: "PATCH",
+        body: JSON.stringify(data)
+    })
+
+    let resData = await res.json()
+    console.log(resData)
+    if (resData.status === true){
+        await getPosts()
+        document.getElementById('edit-title').value = ''
+        document.getElementById('edit-author').value = ''
+        document.getElementById('edit-post').value = ''
+    }
 }
 
 
