@@ -13,6 +13,11 @@
 </head>
 <body>
     @include('inc.navbar')
+
+    @if(!Request::is('/'))  <!--Проверка условия (если на странице такой-то)... странно, метод реагирует только на main page-->
+    @include('inc.hero')    <!--Делаю так что бы данный блок показывался только на странице ABOUT-->
+    @endif  <!--Обязательно закрывать условия!-->
+
     <div class="container">
         <div class="row">
             <div class="col-md-8">
