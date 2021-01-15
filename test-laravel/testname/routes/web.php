@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function () {       //отслеживание главной страницы
+    return view('home');        //на какую страницу кидает при заходе по такому то адресу
+});
+
+Route::get('/about', function () {       //отслеживание about страницы
+    return view('about');
+});
+
+Route::get('/contacts', function () {       //отслеживание contact страницы
+    return view('contacts');
 });
