@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    This is Dezorel project Laravel
                 </div>
 
                 <div class="links">
