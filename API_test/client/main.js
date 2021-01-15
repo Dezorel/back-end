@@ -49,6 +49,9 @@ async function addPost(){
     const data = await res.json()
     if(data.status === true){
         await getPosts()
+        document.getElementById('title').value = ''
+        document.getElementById('author').value = ''
+        document.getElementById('post').value = ''
     }
 }
 
