@@ -5,14 +5,32 @@ function getPosts(){
     global $link;
     $sql='SELECT * FROM `myblog`';
     $query = $link->query($sql);
-    $data = $query->fetchAll();
+    $tempData = $query->fetchAll();
+    $data =null;
+    foreach ($tempData as $tmp){
+        $data[] = [
+            "id_post"=>$tmp['id_post'],
+            "author"=>$tmp['author'],
+            "title"=>$tmp['title'],
+            "post"=>$tmp['post']
+        ];
+    }
     echo json_encode($data);   //делаю массив в json
 }
 function getPost($id){
     global $link;
     $sql="SELECT * FROM `myblog` WHERE `id_post` = '$id'";
     $query = $link->query($sql);
-    $data = $query->fetchAll();
+    $tempData = $query->fetchAll();
+    $data =null;
+    foreach ($tempData as $tmp){
+        $data[] = [
+            "id_post"=>$tmp['id_post'],
+            "author"=>$tmp['author'],
+            "title"=>$tmp['title'],
+            "post"=>$tmp['post']
+        ];
+    }
     if(!$data){        // если пост не найден
         $res = [        //устанавливаю ответ если поста нет
             "status"=>false,
