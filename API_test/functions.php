@@ -1,5 +1,6 @@
 <?php
 require "config.php";
+
 //из урока по АПИ
 function getPosts(){
     global $link;

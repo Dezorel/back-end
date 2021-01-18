@@ -7,10 +7,10 @@ header('Access-control-Allow-Headers: *');       //позволяет други
 header('Access-control-Allow-Methods: *');       //позволяет другим пользователям полльзоваться апи
 header('Access-control-Allow-Credentials: true');       //позволяет другим пользователям полльзоваться апи
 
-header('Content-type: json/application; charset=utf-8');   //делаю так что бы страница отображалась как json
+header('Content-type: application/json; charset=utf-8');   //делаю так что бы страница отображалась как json
 
 $q = $_GET['q']; //переменная получаемая из htaccess = всему тому что идёт после index.php/.... в url строке
-$params = explode('/', $q); //разбиваю строку через слэш, тем самым получая массив введённых данных
+$params = explode("/", $q); //разбиваю строку через слэш, тем самым получая массив введённых данных
 
 $method = $_SERVER['REQUEST_METHOD'];      //смотрим какой метод используется post, get и тд
 
