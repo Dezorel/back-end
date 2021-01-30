@@ -23,15 +23,13 @@ switch ($method) {
     case 'GET':
         if($type === 'posts'){
             if(isset($id)){     //если указан id
-                $post = getBlogPosts();
+                $post = getBlogPost($id);
 
             }
             else{               //если не указан id
                 $posts = getBlogPosts();
             }
         }
-        break;
-    case 'POST':
         break;
 }
 
