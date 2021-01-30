@@ -45,10 +45,20 @@ function addContact ($data){
     $message = $data['message'];
     $sql = "INSERT INTO `contacts` (`name`, `email`, `message`) VALUES ('$name', '$email', '$message');";
     $query= $link->query($sql);
-    $res = [        //делаем ответ сервера при дообавлении
-        "status"=>true,
-        "post_id"=>$link->lastInsertId()
-    ];
-    http_response_code(201);    //возвращаем код 201-создано
+    if($query){
+        http_response_code(201);    //возвращаем код 201-создано
+        $res = [        //делаем ответ сервера при дообавлении
+            "status"=>true,
+            "post_id"=>$link->lastInsertId()
+        ];
+    }
+    else {
+        http_response_code(501); //не реализовано
+        $res = [        //делаем ответ сервера при ошибке
+            "status"=>false
+        ];
+    }
+
+
     echo json_encode($res);
 }
