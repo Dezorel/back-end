@@ -15,5 +15,5 @@ function getBlogPosts(){
             "post"=>$tmp['post']
         ];
     }
-    echo json_encode($data);   //делаю массив в json
+    echo json_encode($data,JSON_UNESCAPED_UNICODE );   //делаю массив в json с поддержкой русского
 }

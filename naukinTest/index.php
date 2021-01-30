@@ -6,7 +6,7 @@ header('Access-control-Allow-Headers: *');
 header('Access-control-Allow-Methods: *');
 header('Access-control-Allow-Credentials: true');
 
-//header('Content-type: application/json; charset=utf-8');
+header('Content-type: application/json; charset=utf-8');
 
 $q = $_GET['q'];
 $params = explode('/', $q);
