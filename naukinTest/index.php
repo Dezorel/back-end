@@ -1,5 +1,5 @@
 <?php
-//require "functions.php";
+require "functions.php";
 
 header('Access-control-Allow-Origin: *');
 header('Access-control-Allow-Headers: *');
@@ -22,11 +22,12 @@ if(isset($params[1])){
 switch ($method) {
     case 'GET':
         if($type === 'posts'){
-            if(isset($id)){
-                $post = null;
+            if(isset($id)){     //если указан id
+                $post = getBlogPosts();
+
             }
-            else{
-                $posts = null;
+            else{               //если не указан id
+                $posts = getBlogPosts();
             }
         }
         break;
