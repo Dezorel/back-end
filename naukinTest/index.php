@@ -31,5 +31,11 @@ switch ($method) {
             }
         }
         break;
+    case 'POST':
+        if($type === 'contacts')
+        {
+           $response = addContact($_POST);
+        }
+        break;
 }
 
