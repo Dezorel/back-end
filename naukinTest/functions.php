@@ -48,10 +48,13 @@ function addContact ($data){
     $email = htmlspecialchars($email);
     $message = htmlspecialchars($message);
 
-    
 
-    $sql = "INSERT INTO `contacts` (`name`, `email`, `message`) VALUES ('$name', '$email', '$message');";
-    $query= $link->query($sql);
+
+    $stms = $link->prepare("INSERT INTO `contacts` (`name`, `email`, `message`) VALUES (:tmpName, :email, :message);");
+    $stms->bindParam(':tmpName',$name);
+    $stms->bindParam(':email',$email);
+    $stms->bindParam(':message',$message);
+    $query= $stms->execute();
     if($query){
         http_response_code(201);    //возвращаем код 201-создано
         $res = [        //делаем ответ сервера при дообавлении
