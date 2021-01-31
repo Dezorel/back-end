@@ -43,6 +43,13 @@ function addContact ($data){
     $name = $data['name'];
     $email = $data['email'];
     $message = $data['message'];
+
+    $name = htmlspecialchars($name);
+    $email = htmlspecialchars($email);
+    $message = htmlspecialchars($message);
+
+    
+
     $sql = "INSERT INTO `contacts` (`name`, `email`, `message`) VALUES ('$name', '$email', '$message');";
     $query= $link->query($sql);
     if($query){
