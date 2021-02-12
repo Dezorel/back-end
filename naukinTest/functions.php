@@ -35,7 +35,18 @@ function getBlogPost($id){
             "data"=>$tmp['data']
         ];
     }
-    echo json_encode($data,JSON_UNESCAPED_UNICODE );   //делаю массив в json с поддержкой русского
+    if($data){
+        http_response_code(200);
+        echo json_encode($data,JSON_UNESCAPED_UNICODE );   //делаю массив в json с поддержкой русского
+    }
+    else {
+        http_response_code(404);
+        $res = [        //делаем ответ сервера при дообавлении
+            "status"=>false,
+            "message"=>"not found id"
+        ];
+        echo json_encode($res);
+    }
 }
 
 function addContact ($data){
