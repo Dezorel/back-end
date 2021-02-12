@@ -30,11 +30,27 @@ switch ($method) {
                 $posts = getBlogPosts();
             }
         }
+        else if($type === "contacts"){
+            http_response_code(405);
+            $res = [
+                "status"=>false,
+                "message"=>"method not allowed"
+            ];
+            echo json_encode($res);
+        }
         break;
     case 'POST':
         if($type === 'contacts')
         {
            $response = addContact($_POST);
+        }
+        else if($type === 'posts'){
+            http_response_code(405);
+            $res = [
+                "status"=>false,
+                "message"=>"method not allowed"
+            ];
+            echo json_encode($res);
         }
         break;
 }
