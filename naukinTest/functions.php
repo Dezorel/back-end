@@ -54,7 +54,40 @@ function getBlogPost($postName){
         echo json_encode($res);
     }
 }
+function getBlogPostWithOutPostName($postName){
 
+    $tempArray = explode("-", $postName);
+    $curentPostName = implode(" ", $tempArray);
+
+    global $link;
+    $sql="SELECT * FROM `blog` WHERE postName != '$curentPostName'";
+    $query = $link->query($sql);
+    $tempData = $query->fetchAll();
+    $data = null;
+    foreach ($tempData as $tmp){
+        $data[] = [
+            "id"=>$tmp['id'],
+            "image"=>$tmp['image'],
+            "postName"=>$tmp['postName'],
+            "title"=>$tmp['title'],
+            "description"=>$tmp['description'],
+            "post"=>$tmp['post'],
+            "data"=>$tmp['data']
+        ];
+    }
+    if($data){
+        http_response_code(200);
+        echo json_encode($data,JSON_UNESCAPED_UNICODE );   //делаю массив в json с поддержкой русского
+    }
+    else {
+        http_response_code(404);
+        $res = [        //делаем ответ сервера при дообавлении
+            "status"=>false,
+            "message"=>"not found id"
+        ];
+        echo json_encode($res);
+    }
+}
 function addContact ($data){
     global $link;
     $name = $data['name'];

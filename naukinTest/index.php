@@ -37,6 +37,12 @@ switch ($method) {
             ];
             echo json_encode($res);
         }
+        else if($type === "postswithout"){
+            if(isset($postName)){     //если указано имя поста
+                $postWithOut = getBlogPostWithOutPostName($postName);
+            }
+
+        }
         break;
     case 'POST':
         if($type === 'contacts')
