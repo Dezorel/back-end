@@ -11,6 +11,7 @@ function getBlogPosts(){
         $data[] = [
             "id"=>$tmp['id'],
             "image"=>$tmp['image'],
+            "postName"=>$tmp['postName'],
             "title"=>$tmp['title'],
             "description"=>$tmp['description'],
             "post"=>$tmp['post'],
@@ -25,7 +26,7 @@ function getBlogPost($postName){
     $curentPostName = implode(" ", $tempArray);
 
     global $link;
-    $sql="SELECT * FROM `blog` WHERE title = '$curentPostName'";
+    $sql="SELECT * FROM `blog` WHERE postName = '$curentPostName'";
     $query = $link->query($sql);
     $tempData = $query->fetchAll();
     $data = null;
@@ -33,6 +34,7 @@ function getBlogPost($postName){
         $data[] = [
             "id"=>$tmp['id'],
             "image"=>$tmp['image'],
+            "postName"=>$tmp['postName'],
             "title"=>$tmp['title'],
             "description"=>$tmp['description'],
             "post"=>$tmp['post'],
