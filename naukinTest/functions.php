@@ -19,9 +19,13 @@ function getBlogPosts(){
     }
     echo json_encode($data,JSON_UNESCAPED_UNICODE );   //делаю массив в json с поддержкой русского
 }
-function getBlogPost($id){
+function getBlogPost($postName){
+
+    $tempArray = explode("-", $postName);
+    $curentPostName = implode(" ", $tempArray);
+
     global $link;
-    $sql="SELECT * FROM `blog` WHERE id = $id;";
+    $sql="SELECT * FROM `blog` WHERE title = '$curentPostName'";
     $query = $link->query($sql);
     $tempData = $query->fetchAll();
     $data = null;

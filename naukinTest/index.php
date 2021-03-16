@@ -16,17 +16,16 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 $type = $params[0];
 if(isset($params[1])){
-    $id = $params[1];
+    $postName = $params[1];
 }
 
 switch ($method) {
     case 'GET':
         if($type === 'posts'){
-            if(isset($id)){     //если указан id
-                $post = getBlogPost($id);
-
+            if(isset($postName)){     //если указано имя поста
+                $post = getBlogPost($postName);
             }
-            else{               //если не указан id
+            else{               //если не указано имя поста
                 $posts = getBlogPosts();
             }
         }
