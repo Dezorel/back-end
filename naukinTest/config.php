@@ -1,7 +1,7 @@
 <?php
 define("HOST", 'localhost');
 define("USER", 'root');
-define("PASS", 'roog');
+define("PASS", 'root');
 define("DBNAME", 'naukin');
 
 try{
