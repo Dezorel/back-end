@@ -1,4 +1,6 @@
 <?php
+$submitDelete = 'Вы уверены что хотите удалить этот элемент?';
+$submitUpdate = 'Вы уверены что хотите изменить этот элемент?';
 session_start();
 $status = $_SESSION['user']['status'];
 if($status !== 'true'){
@@ -16,7 +18,6 @@ require 'conectionAndFunctions.php';
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <script src="script.js" defer></script>
 
     <title>Admin Panel</title>
 </head>
@@ -111,15 +112,19 @@ foreach ($posts as $post){
     echo '<td>'.$post["post"].'</td>';
     echo '<td>'.$post["data"].'</td>';
     echo '<td style="max-width: 200px; overflow: hidden">'.$post["image"].'</td>';
-    echo '<td><form action="deletePost.php" method="post">
-                    <input type="text" name="id" value='.$post["id"].' style="display: none">
-                    <button type="submit" onclick="confirm("hello")" class="btn btn-danger">Удалить</button>
-              </form>
-              <form action="updatePost.php" method="post">
-              <input type="text" name="id" value='.$post["id"].' style="display: none">
-                    <button type="submit" class="btn btn-warning mt-3">Изменить</button>
-              </form>
-          </td>';
+    ?>
+    <td>
+    <form action="deletePost.php" method="post" onSubmit="return confirm('Вы уверены что хотите удалить этот пост?')">
+        <input type="text" name="id" value='<?echo $post["id"]?>' style="display: none">
+        <button type="submit" class="btn btn-danger">Удалить</button>
+    </form>
+    <form action="updatePost.php" method="post" onSubmit="return confirm('Вы уверены что хотите перейти к редактированию этого поста?')">
+        <input type="text" name="id" value='<?echo $post["id"]?>' style="display: none">
+        <button type="submit" class="btn btn-warning mt-3">Изменить</button>
+    </form>
+    </td>
+    
+<?php
     echo '</tr>';
 
 }
@@ -128,8 +133,10 @@ foreach ($posts as $post){
 </table>
 
 <div class="container">
-
-
+    <form action="deletePost.php" method="post" onSubmit="return confirm()">
+        <input type="text" name="id" value='.$post["id"].' style="display: none">
+        <button type="submit" class="btn btn-danger">Удалить</button>
+    </form>
 </div>
 
 
