@@ -86,7 +86,7 @@ require 'conectionAndFunctions.php';
         </div>
     </div>
 </div>
-
+<h1 align="center" class="mb-5">Таблица постов</h1>
 <table class="table" id="allPosts">
     <thead>
     <tr>
