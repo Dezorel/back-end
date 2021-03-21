@@ -123,7 +123,7 @@ foreach ($posts as $post){
         <button type="submit" class="btn btn-warning mt-3">Изменить</button>
     </form>
     </td>
-    
+
 <?php
     echo '</tr>';
 

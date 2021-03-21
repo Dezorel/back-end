@@ -1,5 +1,4 @@
 <?php
-//
 require 'conectionAndFunctions.php';
 $currentId = $_POST['id'];
 if($currentId){
