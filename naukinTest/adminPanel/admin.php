@@ -8,7 +8,7 @@ if($status !== 'true'){
 require 'conectionAndFunctions.php';
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -111,7 +111,15 @@ foreach ($posts as $post){
     echo '<td>'.$post["post"].'</td>';
     echo '<td>'.$post["data"].'</td>';
     echo '<td style="max-width: 200px; overflow: hidden">'.$post["image"].'</td>';
-    echo '<td><a class="btn btn-danger" onclick="deletePost('.$post["id"].')">Удалить</a><a class="btn btn-warning mt-3" onclick="changePost('.$post["id"].')">Изменить</a>  </td>';
+    echo '<td><form action="deletePost.php" method="post">
+                    <input type="text" name="id" value='.$post["id"].' style="display: none">
+                    <button type="submit" onclick="confirm("hello")" class="btn btn-danger">Удалить</button>
+              </form>
+              <form action="updatePost.php" method="post">
+              <input type="text" name="id" value='.$post["id"].' style="display: none">
+                    <button type="submit" class="btn btn-warning mt-3">Изменить</button>
+              </form>
+          </td>';
     echo '</tr>';
 
 }
@@ -124,9 +132,7 @@ foreach ($posts as $post){
 
 </div>
 
-<?php
 
-?>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
