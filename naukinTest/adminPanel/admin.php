@@ -52,6 +52,7 @@ require 'conectionAndFunctions.php';
         <h1 id="createPost">Создать новый пост</h1>
     </div>
 </div>
+<!--Create Post-->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9">
@@ -118,7 +119,7 @@ foreach ($posts as $post){
         <input type="text" name="id" value='<?echo $post["id"]?>' style="display: none">
         <button type="submit" class="btn btn-danger">Удалить</button>
     </form>
-    <form action="updatePost.php" method="post" onSubmit="return confirm('Вы уверены что хотите перейти к редактированию этого поста?')">
+    <form action="changePost.php" method="post">
         <input type="text" name="id" value='<?echo $post["id"]?>' style="display: none">
         <button type="submit" class="btn btn-warning mt-3">Изменить</button>
     </form>

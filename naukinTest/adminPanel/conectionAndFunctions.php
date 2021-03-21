@@ -19,3 +19,27 @@ function getAllPosts(){
     $data = $query->fetchAll();
     return $data;
 }
+function getPost($id){
+    global $link;
+    $sql = "SELECT * FROM `blog` WHERE id = $id";
+    $query= $link->query($sql);
+    $query->execute();
+    $data = $query->fetchAll();
+    return $data;
+}
+function updateThisPost($id, $title, $postName, $newDescription, $postText, $date, $image){
+    global $link;
+    if($id && $title && $postName && $newDescription && $postText && $date && $image){
+        $sql = "UPDATE `blog` SET `postName` = :postName, `title` = :title, `image` = :image, `description` = :newDescription, `post` = :text, `data` = :newData WHERE `blog`.`id` = '$id'";
+        $query= $link->prepare($sql);
+        $params = [
+            "postName"=> $postName,
+            "title"=>$title,
+            "image"=>$image,
+            "newDescription"=>$newDescription,
+            "text"=>$postText,
+            "newData"=>$date
+        ];
+        $query->execute($params);
+    }
+}
