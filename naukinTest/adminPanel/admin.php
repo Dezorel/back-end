@@ -97,6 +97,8 @@ require 'conectionAndFunctions.php';
         <th scope="col">Post text</th>
         <th scope="col">Data</th>
         <th scope="col">Image</th>
+        <th scope="col">Image</th>
+        <th scope="col">Действия</th>
     </tr>
     </thead>
     <tbody>
@@ -114,7 +116,7 @@ foreach ($posts as $post){
     echo '<td>'.$post["data"].'</td>';
     echo '<td style="max-width: 200px; overflow: hidden">'.$post["image"].'</td>';
     ?>
-    <td style="max-width: 200px; overflow: hidden"><img width="100%" src='<?echo $post["image"]?>' alt="Картинка не может быть загружена!"></td>
+    <td style="width: 100px"> <img width="100%" src='<?echo $post["image"]?>' alt="Картинка не может быть загружена!"></td>
     <td>
     <form action="deletePost.php" method="post" onSubmit="return confirm('Вы уверены что хотите удалить этот пост?')">
         <input type="text" name="id" value='<?echo $post["id"]?>' style="display: none">
