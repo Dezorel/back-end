@@ -22,7 +22,7 @@ require 'conectionAndFunctions.php';
 </head>
 <body>
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: sticky; top:0px; z-index: 10">
    <div class="container">
        <a class="navbar-brand" href="#">Панель админа</a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,8 +30,11 @@ require 'conectionAndFunctions.php';
        </button>
        <div class="collapse navbar-collapse" id="navbarNav">
            <ul class="navbar-nav">
-               <li class="nav-item active">
-                   <a class="nav-link" href="#">Блог <span class="sr-only">(current)</span></a>
+               <li class="nav-item">
+                   <a class="nav-link" href="#createPost">Созать пост</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="#allPosts">Все посты</a>
                </li>
                <li class="nav-item">
                    <a class="nav-link" href="#">Контакты</a>
@@ -45,36 +48,36 @@ require 'conectionAndFunctions.php';
 </nav>
 <div class="row">
     <div class="col-md-7 offset-4">
-        <h1>Создать новый пост</h1>
+        <h1 id="createPost">Создать новый пост</h1>
     </div>
 </div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-9">
-            <form action="">
+            <form action="createPost.php" method="post">
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" name="title" class="form-control" maxlength="50" id="login" aria-describedby="emailHelp">
+                    <input type="text" name="title" class="form-control" maxlength="50" id="login" aria-describedby="emailHelp" required>
                 </div>
                 <div class="form-group">
                     <label for="postName">PostName</label>
-                    <input type="text" name="postName" class="form-control" maxlength="50" id="login" aria-describedby="emailHelp">
+                    <input type="text" name="postName" class="form-control" maxlength="50" id="login" aria-describedby="emailHelp" required>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" name="description" class="form-control" maxlength="250" id="login" aria-describedby="emailHelp">
+                    <input type="text" name="description" class="form-control" maxlength="250" id="login" aria-describedby="emailHelp" required>
                 </div>
                 <div class="form-group">
                     <label for="postText">Post text</label>
-                    <textarea class="form-control" name="postText" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" name="postText" id="exampleFormControlTextarea1" rows="3" required></textarea>
                 </div>
                 <div class="form-group ">
                     <label for="example-date-input" class="col-2 col-form-label">Data</label>
-                    <input class="form-control" type="date" id="example-date-input">
+                    <input class="form-control" name="data" type="date" id="example-date-input" required>
                 </div>
                 <div class="form-group">
                     <label for="image">Image URL</label>
-                    <input type="text" name="image" class="form-control" id="login" aria-describedby="emailHelp">
+                    <input type="text" name="image" class="form-control" id="login" aria-describedby="emailHelp" required>
                 </div>
                 <button type="submit" class="btn btn-block btn-success mb-5">Создать</button>
             </form>
@@ -82,7 +85,7 @@ require 'conectionAndFunctions.php';
     </div>
 </div>
 
-<table class="table">
+<table class="table" id="allPosts">
     <thead>
     <tr>
         <th scope="col-4">#</th>
@@ -98,6 +101,7 @@ require 'conectionAndFunctions.php';
 
 <?php
 $posts = getAllPosts();
+$posts = array_reverse($posts);
 foreach ($posts as $post){
     echo '<tr>';
     echo '<th scope="row">'.$post["id"].'</th>';
