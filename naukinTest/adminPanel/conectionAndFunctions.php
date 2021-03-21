@@ -1,7 +1,7 @@
 <?php
 $my_host = 'localhost';
 $username = 'root';
-$password = '';
+$password = 'root';
 $database = 'naukin';
 
 try{
