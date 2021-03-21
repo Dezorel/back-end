@@ -108,12 +108,13 @@ foreach ($posts as $post){
     echo '<tr>';
     echo '<th scope="row">'.$post["id"].'</th>';
     echo '<td>'.$post["title"].'</td>';
-    echo '<td>'.$post["postName"].'</td>';
+    echo '<td style="max-width: 10px; overflow: hidden">'.$post["postName"].'</td>';
     echo '<td>'.$post["description"].'</td>';
     echo '<td>'.$post["post"].'</td>';
     echo '<td>'.$post["data"].'</td>';
     echo '<td style="max-width: 200px; overflow: hidden">'.$post["image"].'</td>';
     ?>
+    <td style="max-width: 200px; overflow: hidden"><img width="100%" src='<?echo $post["image"]?>' alt="Картинка не может быть загружена!"></td>
     <td>
     <form action="deletePost.php" method="post" onSubmit="return confirm('Вы уверены что хотите удалить этот пост?')">
         <input type="text" name="id" value='<?echo $post["id"]?>' style="display: none">
@@ -133,12 +134,6 @@ foreach ($posts as $post){
     </tbody>
 </table>
 
-<div class="container">
-    <form action="deletePost.php" method="post" onSubmit="return confirm()">
-        <input type="text" name="id" value='.$post["id"].' style="display: none">
-        <button type="submit" class="btn btn-danger">Удалить</button>
-    </form>
-</div>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
