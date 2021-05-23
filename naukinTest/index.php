@@ -1,3 +1,8 @@
+<html>
+    <head>
+        <meta http-equiv="refresh" content="2">
+    </head>
+</html>
 <?php
 require "functions.php";
 
