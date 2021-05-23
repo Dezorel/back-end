@@ -49,7 +49,7 @@ switch ($method) {
         {
            $response = addContact($_POST);
         }
-        else if($type === 'posts'){
+        else{
             http_response_code(405);
             $res = [
                 "status"=>false,

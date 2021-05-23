@@ -92,17 +92,21 @@ function addContact ($data){
     global $link;
     $name = $data['name'];
     $email = $data['email'];
+    $category = $data['category'];
     $message = $data['message'];
 
     $name = htmlspecialchars($name);
     $email = htmlspecialchars($email);
+    $category = htmlspecialchars($category);
     $message = htmlspecialchars($message);
 
 
 
-    $stms = $link->prepare("INSERT INTO `contacts` (`name`, `email`, `message`) VALUES (:tmpName, :email, :message);");
+    $stms = $link->prepare("INSERT INTO `contacts` (`name`, `email`, `category`, `message`) 
+VALUES (:tmpName, :email, :category, :message);");
     $stms->bindParam(':tmpName',$name);
     $stms->bindParam(':email',$email);
+    $stms->bindParam(':category',$category);
     $stms->bindParam(':message',$message);
     $query= $stms->execute();
     if($query){
