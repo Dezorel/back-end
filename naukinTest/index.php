@@ -1,8 +1,3 @@
-<html>
-    <head>
-        <meta http-equiv="refresh" content="2">
-    </head>
-</html>
 <?php
 require "functions.php";
 
@@ -12,6 +7,8 @@ header('Access-control-Allow-Methods: *');
 header('Access-control-Allow-Credentials: true');
 
 header('Content-type: application/json; charset=utf-8');
+
+header("Refresh:2, url=https://naukin.com");        //перебрасывает на страцицу (фикс ошибки с формой)
 
 $q = $_GET['q'];
 $params = explode('/', $q);

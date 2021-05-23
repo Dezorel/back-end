@@ -43,3 +43,12 @@ function updateThisPost($id, $title, $postName, $newDescription, $postText, $dat
         $query->execute($params);
     }
 }
+
+function getContacts(){
+    global $link;
+    $sql = "SELECT * FROM `contacts`";
+    $query= $link->query($sql);
+    $query->execute();
+    $data = $query->fetchAll();
+    return $data;
+}

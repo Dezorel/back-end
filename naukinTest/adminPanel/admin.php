@@ -38,7 +38,7 @@ require 'conectionAndFunctions.php';
                    <a class="nav-link" href="#allPosts">Все посты</a>
                </li>
                <li class="nav-item">
-                   <a class="nav-link" href="#">Контакты</a>
+                   <a class="nav-link" href="contacts.phtml">Контакты</a>
                </li>
                <li class="nav-item">
                    <a class="nav-link" href="#">Заявки</a>
